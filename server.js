@@ -1,4 +1,6 @@
-var express = require("express");
+'use strict';
+
+var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var Adjective = require('./lib/adjective.js');
@@ -23,41 +25,34 @@ app.listen(port, function() {
   console.log('server started on port ' + port);
 });
 
-app.get('/adjective', function (req, res) {
+app.get('/adjective', function(req, res) {
   res.json(getRandomWord(adjective));
 });
 
-app.get('/noun', function (req, res) {
+app.get('/noun', function(req, res) {
   res.json(getRandomWord(noun));
 });
 
-app.get('/verb', function (req, res) {
+app.get('/verb', function(req, res) {
   res.json(getRandomWord(verb));
 });
 
-app.get("/", function (req, res) {
-  // res.send("hello universe!");
+app.get('/', function(req, res) {
+  // res.send('hello universe!');
   res.sendFile('index.html');
 });
 
-app.post('/adjective', function (req, res) {
+app.post('/adjective', function(req, res) {
   var word = postWord(req.body.word, adjective);
   res.json(word);
 });
 
-app.post('/noun', function (req, res) {
+app.post('/noun', function(req, res) {
   var word = postWord(req.body.word, noun);
   res.json(word);
 });
 
-app.post('/verb', function (req, res) {
+app.post('/verb', function(req, res) {
   var word = postWord(req.body.word, verb);
   res.json(word);
 });
-
-
-
-
-
-
-
